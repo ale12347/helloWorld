@@ -1,0 +1,39 @@
+/*changes the elements of all paragraphs*/
+p {
+    color: dimgray;
+    font-family: "Lucida Console", "Courier New", monospace;
+    ""
+}
+
+h2{
+    color: darkslategray;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+/*adds border element to tall tables*/
+table, td, th{
+    border-style: solid;
+    border-width: 5px;
+    border-color: darkblue;
+    border-collapse: collapse;
+}
+
+/*creates a special id for specific paragraph*/
+p#special {
+    color: red;
+}
+
+.change {
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: red;
+    font-size: 40px;
+}
+
+img.logo{
+    width: 500px;
+    height: 100px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: red;
+
+}
