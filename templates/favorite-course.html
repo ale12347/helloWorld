@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %}
 <head>
     <meta charset="UTF-8">
     <title>Favorite Course</title>
 </head>
-<body>
+{% block content %}
+<h1>Favorite Course</h1>
 <p> You entered that your favorite course as: {{ request.args.get('subject') }} {{ request.args.get('course_number') }} </p>
-</body>
+{% endblock %}
+
 </html>
