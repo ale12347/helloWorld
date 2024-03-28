@@ -5,24 +5,79 @@
     <title>Contact</title>
 </head>
 <body>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">First Name</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Last Name</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Last Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Date</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Date">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+{% if form_submitted %}
+    <div class = "col-12">
+        <h2>Thank you for completing my form!</h2>
+    </div>
+    <div class="col-md-6">
+        <p>First Name:</p>
+    </div>
+    <div class="col-md-6">
+        <p>{{ request.form.get('first_name') }}</p>
+    </div>
+    <div class="col-md-6">
+        <p>Last Name:</p>
+    </div>
+    <div class="col-md-6">
+        <p>{{ request.form.get('last_name') }}</p>
+    </div>
+    <div class="col-md-6">
+        <p>Age:</p>
+    </div>
+    <div class="col-md-6">
+        <p>{{ request.form.get('age') }}</p>
+    </div>
+    <div class="col-md-6">
+        <p>Email:</p>
+    </div>
+    <div class="col-md-6">
+        <p>{{ request.form.get('email') }}</p>
+    </div>
+    <div class="col-md-6">
+    <p>Agree to Be Contacted:</p>
+    </div>
+    <div class="col-md-6">
+        <p>{{ 'Yes' if request.form.get('agree_check') else 'No' }}</p>
+    </div>
+
+<p><a href="{{ url_for('contact') }}">Complete form again</a></p>
+
+{% else %}
+<form class="row g-3" action="{{ url_for('contact') }}" method="post">
+    <div class="col-md-6">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name">
+    </div>
+    <div class="col-md-6">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name">
+    </div>
+    <div class="col-md-6">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" class="form-control" id="age" name="age">
+    </div>
+    <div class="col-12">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="col-12">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="agree_check">
+        <label class="form-check-label" for="agree_check">
+            I agree to be contacted
+        </label>
+    </div>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary"> Submit Form</button>
+    </div>
 </form>
+{% endif %}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 </body>
 </html>
