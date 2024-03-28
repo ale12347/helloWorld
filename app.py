@@ -25,6 +25,10 @@ def favorite_course():
 
     return render_template('favorite-course.html', subject=subject, course_number=course_number)
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 if __name__ == '__main__':
     app.run()
 
