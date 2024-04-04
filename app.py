@@ -50,7 +50,7 @@ def student_create():
         email = request.form['email']
         birth_date = request.form['birth_date']
         is_honors = True if 'is_honors' in request.form else False
-
+#added in email variable
         student = Student(first_name=first_name, last_name=last_name, major_id=major_id,
                           birth_date=dt.strptime(birth_date, '%Y-%m-%d'),email=email, is_honors=is_honors)
         db.session.add(student)
