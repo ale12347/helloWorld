@@ -25,6 +25,10 @@
                         </li>
                         {% endif %}
                         {% if current_user.role in ['ADMIN', 'MANAGER'] %}
+                         <li class="nav-item">
+                         <!--adding a training tab on the navbar-->
+                          <a id="training" class="nav-link {% if request.endpoint=='training' %}active{%endif %}" href="{{ url_for('training') }}">Training</a>
+                        </li>
                         <li class="nav-item">
                           <a id="student_create" class="nav-link {% if request.endpoint=='student_create' %}active{%endif %}" href="{{ url_for('student_create') }}">Add New Student</a>
                         </li>

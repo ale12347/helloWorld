@@ -213,17 +213,24 @@ def error():
     # Before routing to this route, ensure flash function is used
     return render_template('error.html')
 
+@app.route('/training')
+@login_required
+@role_required(['ADMIN', 'MANAGER'])
+def training():
+    #query to find first name and email
+   trainer = User.query.filter_by(first_name='Andrew', last_name='Le').first()
+   if trainer:
+       return render_template('training.html', first_name=trainer.first_name, email=trainer.email)
+   else:
+       flash('Unnathi Konduru\'s information not found in the database.', 'error')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
     flash(f'Sorry! You are trying to access a page that does not exist. Please contact support if this problem persists.', 'error')
     return render_template('404.html'), 404
 
-@app.route('/training')
-@login_required
-@role_required(['ADMIN', 'MANAGER'])
-def training():
-    return render_template('training.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
