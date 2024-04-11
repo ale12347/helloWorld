@@ -222,7 +222,7 @@ def training():
    if trainer:
        return render_template('training.html', first_name=trainer.first_name, email=trainer.email)
    else:
-       flash('Unnathi Konduru\'s information not found in the database.', 'error')
+       flash('Andrew Le\'s information not found in the database.', 'error')
 
 
 @app.errorhandler(404)
